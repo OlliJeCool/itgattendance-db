@@ -12,6 +12,15 @@ CREATE TABLE IF NOT EXISTS "Arrival"(
     "DateTime" timestamp DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS "NotArrived"(
+    "Id" serial PRIMARY KEY,
+    "UserId" int NOT NULL,
+    "DateTime" DATE NOT NULL
+);
+
 
 ALTER TABLE "Arrival"
+ADD FOREIGN KEY ("UserId") REFERENCES "Users"("Id");
+
+ALTER TABLE "NotArrived"
 ADD FOREIGN KEY ("UserId") REFERENCES "Users"("Id");
